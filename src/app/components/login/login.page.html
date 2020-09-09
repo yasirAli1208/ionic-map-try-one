@@ -1,0 +1,69 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-title>login</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content class="hi">
+
+
+  <div class="logo">
+          <ion-img src="assets/icon/bird.png" class="myLogo" id="uplogo"></ion-img>
+  </div>
+  <div class="btns" id="loginBtns" *ngIf="loginlogoMain == false">
+    <ion-button expand="block" class="btncolor" (click)="loginlogoMain = true" (click)="changeLogin()" (click)="viewLoginForm()">Login</ion-button>
+    <ion-button expand="block" class="btncolor2" (click)="signUp()">Sign Up</ion-button>
+  </div>
+
+  <div class="loginform" id="loginform" *ngIf="loginlogoform == true">
+
+    <ion-item class="bg-transparent">
+      <ion-label position="floating">User name</ion-label>
+      <ion-input [(ngModel)]="emailAB"></ion-input>
+    </ion-item>
+    <ion-item class="bg-transparent">
+      <ion-label position="floating">Password</ion-label>
+      <ion-input id="pass" type="password" [(ngModel)]="passwordAB"></ion-input>
+      <ion-icon name="eye-outline" slot="end" style="margin-top: 8%;color:white" *ngIf="eyeShow == true" (click)="eyehidef()"></ion-icon>
+        <ion-icon name="eye-off-outline" slot="end" style="margin-top: 8%;color:white" *ngIf="eyeShow == false" (click)="eyehidef()"></ion-icon>
+    </ion-item>
+
+    <ion-button expand="block" class="btncolor3" (click)="goHome(emailAB , passwordAB)">Log in</ion-button>
+
+    <h6 class="signup2" (click)="chngeSignUp()">Sign up?</h6>
+
+  </div>
+
+  <!-- <div class="signUpform" id="signUpform" *ngIf="signUpformO == true">
+
+    <ion-item class="bg-transparent">
+      <ion-label position="floating">First name</ion-label>
+      <ion-input ></ion-input>
+    </ion-item>
+    <ion-item class="bg-transparent">
+      <ion-label position="floating">Last name</ion-label>
+      <ion-input ></ion-input>
+    </ion-item>
+    <ion-item class="bg-transparent">
+      <ion-label position="floating">Email</ion-label>
+      <ion-input ></ion-input>
+    </ion-item>
+    <ion-item class="bg-transparent">
+      <ion-label position="floating">Phone no.</ion-label>
+      <ion-input type="number"></ion-input>
+    </ion-item>
+    <ion-item class="bg-transparent">
+      <ion-label position="floating">Password</ion-label>
+      <ion-input id="pass" type="password"></ion-input>
+      <ion-icon name="eye-outline" slot="end" style="margin-top: 8%;color:white" *ngIf="eyeShow == true" (click)="eyehidef()"></ion-icon>
+        <ion-icon name="eye-off-outline" slot="end" style="margin-top: 8%;color:white" *ngIf="eyeShow == false" (click)="eyehidef()"></ion-icon>
+    </ion-item>
+
+    <ion-button expand="block" class="btncolor3" >Sign up</ion-button>
+
+    <h6 class="signup2" (click)="chngeLoginUp()">Login?</h6>
+
+  </div> -->
+
+
+</ion-content>

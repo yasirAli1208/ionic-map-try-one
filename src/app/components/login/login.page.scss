@@ -1,0 +1,72 @@
+ion-content{
+    --background-color:reds;
+    --ion-color-btn1: linear-gradient(58deg, rgba(2,0,36,1) 0%, rgba(121,9,103,1) 35%, rgba(0,212,255,1) 100%);
+    --ion-color-btn2: linear-gradient(252deg, rgba(2,0,36,1) 0%, rgba(121,9,103,1) 35%, rgba(0,212,255,1) 100%);
+    --trans:transparent;
+    --whi:white;
+    --inner-padding-start:0px;
+      --inner-padding-end:0px;
+}
+.logo{
+
+}
+
+.myLogo{
+    height: 85px;
+    width: 36%;
+
+    margin-left: 30%;
+    margin-top: 35%;
+    transition: 1s all ease-in-out;
+}
+.btns{
+    margin-top: 35%;
+    transition: 1s all ease-in-out;
+}
+
+.btncolor {
+    --background: var(--ion-color-btn1);
+    width: 80%;
+    margin-left: 10%;
+  }
+
+  .btncolor2 {
+    --background: var(--ion-color-btn2);
+    width: 80%;
+    margin-left: 10%;
+  }
+  .hi{
+    --background: var(--ion-color-btn2);
+  }
+  .uplogo{
+      margin: 25%;
+  }
+  .loginform{
+      margin-top: 20%;
+          padding: 0px 15px;
+  }
+  .bg-transparent{
+      --background: var(--trans);
+
+      --color: var(--whi);
+      --border-color:var(--whi);
+  }
+  ion-label{
+    --color:white
+  }
+
+  ion-item.item-has-focus > ion-label{
+    color:  white  !important;
+  }
+
+  .btncolor3 {
+    --background: var(--ion-color-btn1);
+    margin-top: 10%;
+  }
+.signup2{
+  color: white;
+}
+.signUpform{
+  margin-top: 0%;
+      padding: 0px 15px;
+}
