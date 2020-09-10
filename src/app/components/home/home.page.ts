@@ -1,4 +1,5 @@
 import { Component, ViewChild, ElementRef  } from '@angular/core';
+import { Geolocation } from '@ionic-native/geolocation/ngx';
  
 declare var google:any;
 
@@ -13,14 +14,71 @@ export class HomePage {
 
   @ViewChild('map', {read:ElementRef, static: false}) mapRef: ElementRef
 
-  constructor() {}
+ locationWatchStarted:boolean;
+  locationSubscription:any;
+
+  locationTraces = [];
+  myLat = 24.8160888;
+  myLang = 67.0453431;
+  myTime:any;
+
+  constructor(
+    private geolocation: Geolocation,
+    ) {}
+
+ngOnInit(){
+
+this.getCoordinates() 
+
+}
 
   ionViewDidEnter(){
     this.showMap();
   }
 
+
+ getCoordinates() {
+    this.geolocation.getCurrentPosition().then((resp) => {
+
+      this.locationTraces.push({
+        latitude:resp.coords.latitude,
+        longitude:resp.coords.longitude,
+        accuracy:resp.coords.accuracy,
+        timestamp:resp.timestamp
+      });
+
+    }).catch((error) => {
+      console.log('Error getting location', error);
+    });
+    
+
+    this.locationSubscription = this.geolocation.watchPosition();
+    this.locationSubscription.subscribe((resp) => {
+
+      this.locationWatchStarted = true;
+      this.locationTraces.push({
+        latitude:resp.coords.latitude,
+        longitude:resp.coords.longitude,
+        accuracy:resp.coords.accuracy,
+        timestamp:resp.timestamp
+      });
+console.log(this.locationTraces)
+    });
+ 
+
+  }
+
+pinMylocation(){
+ this.myLat = this.locationTraces[0].latitude
+ this.myLang = this.locationTraces[0].longitude
+    console.log(this.myLat,this.myLang)
+}
+
   showMap(){
-    const location = new google.maps.LatLng(24.8186547, 67.0456435);
+    var lat = 24.8160888
+    var lng = 67.0453431
+    const location = new google.maps.LatLng( this.myLat ,this.myLang);
+    console.log(location)
     const options = {
       center: location,
       zoom: 15,
@@ -28,5 +86,11 @@ export class HomePage {
     }
     this.map = new google.maps.Map(this.mapRef.nativeElement, options);
   }
+
+
+
+
+
+
 
 }

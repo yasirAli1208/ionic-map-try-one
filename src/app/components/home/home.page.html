@@ -3,6 +3,16 @@
     <ion-title>
       maps
     </ion-title>
+    <div class="ion-text-center" slot="end">
+
+    <ng-container >
+      <ion-button color="primary" (click)="pinMylocation()">Start Location</ion-button>
+    </ng-container>
+    <ng-template #elseTemplate>
+      Location Watch Started!
+    </ng-template>
+
+  </div>
   </ion-toolbar>
 </ion-header>
 
@@ -19,6 +29,9 @@
   </div> -->
 
   <div #map id="map"></div>
+
+
+
 
 
 </ion-content>
