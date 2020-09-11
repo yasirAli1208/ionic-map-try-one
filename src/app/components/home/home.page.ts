@@ -27,70 +27,40 @@ export class HomePage {
     ) {}
 
 ngOnInit(){
-
-this.getCoordinates() 
-
 }
 
   ionViewDidEnter(){
-    this.showMap();
+    this.getCoordinates();    
   }
 
 
  getCoordinates() {
     this.geolocation.getCurrentPosition().then((resp) => {
-
-      this.locationTraces.push({
-        latitude:resp.coords.latitude,
-        longitude:resp.coords.longitude,
-        accuracy:resp.coords.accuracy,
-        timestamp:resp.timestamp
-      });
-
+      console.log(resp);
+      this.showMap(resp.coords.latitude, resp.coords.longitude);
     }).catch((error) => {
       console.log('Error getting location', error);
     });
-    
-
-    this.locationSubscription = this.geolocation.watchPosition();
-    this.locationSubscription.subscribe((resp) => {
-
-      this.locationWatchStarted = true;
-      this.locationTraces.push({
-        latitude:resp.coords.latitude,
-        longitude:resp.coords.longitude,
-        accuracy:resp.coords.accuracy,
-        timestamp:resp.timestamp
-      });
-console.log(this.locationTraces)
-    });
- 
 
   }
 
-pinMylocation(){
- this.myLat = this.locationTraces[0].latitude
- this.myLang = this.locationTraces[0].longitude
-    console.log(this.myLat,this.myLang)
-}
+  pinMylocation(){
+    this.geolocation.getCurrentPosition().then((position) => {
+      this.map.setCenter(new google.maps.LatLng(position.coords.latitude, position.coords.longitude));
+    }, (err) => {
+      console.log(err);
+    }); 
 
-  showMap(){
-    var lat = 24.8160888
-    var lng = 67.0453431
-    const location = new google.maps.LatLng( this.myLat ,this.myLang);
-    console.log(location)
+  }
+
+  showMap(lat, lng){
+    const location = new google.maps.LatLng(lat, lng);
     const options = {
       center: location,
-      zoom: 15,
-      disableDefaultUI: true
+      zoom: 15
     }
     this.map = new google.maps.Map(this.mapRef.nativeElement, options);
   }
-
-
-
-
-
 
 
 }
